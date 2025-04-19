@@ -11,7 +11,7 @@ import SwiftUI
 struct Skin_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomaPageView()
         }
     }
 }

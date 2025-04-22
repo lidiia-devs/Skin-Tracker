@@ -55,5 +55,5 @@ struct Medicine: Hashable, Identifiable {
 }
 
 #Preview {
-   MedicineRowView(isSelected: true, label: "Test")
+  MedicineRowView(isSelected: true, label: "Test")
 }

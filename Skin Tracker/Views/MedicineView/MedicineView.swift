@@ -13,15 +13,12 @@ struct MedicineView: View {
     var body: some View {
         VStack (alignment: .trailing) {
             Button("add", systemImage: "plus.circle") {
+               
                 if checkIfMedEmpty() {
-                    
                     //let user know it's empty
-                    
                 } else {
-                  
                     medicines.append(Medicine(name: ""))
                 }
-               
             } .padding(.horizontal)
             
             ForEach (medicines, id: \.self) { medicineView in

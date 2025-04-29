@@ -6,14 +6,23 @@
 //
 
 import SwiftData
+import Foundation
 
 @Model
 class MedicineData {
     var name: String
     var isSelected: Bool
+    let dateCreated: Date
     
     init(name: String = "", isSelected: Bool = false) {
         self.name = name
         self.isSelected = isSelected
+        self.dateCreated = Date()
     }
+    
+    static let sampleData = [
+        MedicineData(name: "Vit D", isSelected: true),
+        MedicineData(name: "Vit D", isSelected: true),
+        MedicineData(name: "Vit D", isSelected: true),
+    ]
 }

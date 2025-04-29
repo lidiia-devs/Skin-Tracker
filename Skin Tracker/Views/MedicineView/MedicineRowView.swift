@@ -8,29 +8,31 @@ import SwiftUI
 
 struct MedicineRowView: View {
     
-    @State var isSelected: Bool = false
-    @State var label: String
+    @Binding var medicineData: MedicineData
+    
     @State private var placeholderColor: Color = .white
+    
+  
     
     var body: some View {
         HStack {
             Button(action: {
-                isSelected.toggle()
+                medicineData.isSelected.toggle()
             }) {
-                    Image(isSelected ? "buttonImageWithTick" : "buttonImage")
+                Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImage")
                         .resizable()
                         .frame(width: 43, height: 43)
             }
             .padding(.leading, 20)
             .padding(.trailing, 10)
             .padding(.vertical, 12)
-            TextField("Medicine", text: $label)
+            TextField("Medicine", text: $medicineData.name)
                 .foregroundColor(placeholderColor)
                 .font(.system(size: 23, weight: .bold))
                 .lineLimit(1)
-                .onChange(of: label) { newValue in
+                .onChange(of: medicineData.name) { newValue in
                                     if newValue.count > 29 {
-                                        label = String(newValue.prefix(29))
+                                        medicineData.name = String(newValue.prefix(29))
                                     }
                                 }
         }
@@ -47,13 +49,7 @@ struct MedicineRowView: View {
     }
 }
 
-struct Medicine: Hashable, Identifiable {
-    var id: UUID = UUID()
-    var isSelected: Bool = false
-    var name: String
-    
-}
-
 #Preview {
-  MedicineRowView(isSelected: true, label: "Test")
+ //   let testMedData = MedicineData()
+ // MedicineRowView(medicineData)
 }

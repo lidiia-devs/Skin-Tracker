@@ -11,14 +11,13 @@ struct MainPageView: View {
     
     var body: some View {
         VStack {
-            Text("Good Morning,")
-            Text("Name")
+            MedicineView()
+            SkinImagesView()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.background)
     }
 }
 
 #Preview{
     MainPageView()
+        .modelContainer(SampleData.shared.modelContainer)
 }

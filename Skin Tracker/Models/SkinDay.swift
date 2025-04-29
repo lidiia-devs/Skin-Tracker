@@ -13,12 +13,14 @@ class SkinDay {
     var date: Date
     var skinScale: SkinScale
     var medicines: [MedicineData]
+    var storedSkinImages: [StoredImage]
    //TODO: var image
     
-    init(skinScale: SkinScale, medicines: [MedicineData]) {
+    init(skinScale: SkinScale, medicines: [MedicineData], storedImages: [StoredImage]) {
         self.date = Date()
         self.skinScale = skinScale
         self.medicines = medicines
+        self.storedSkinImages = storedImages
     }
     
 }

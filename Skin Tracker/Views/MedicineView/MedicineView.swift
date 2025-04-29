@@ -6,35 +6,49 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MedicineView: View {
-    @State var medicines: [Medicine] = [Medicine(name: "Vitamin C"), Medicine(name: "Vitamin D"), Medicine(name: "Steroids")]
+    
+    //add real swiftData Query
+    @Environment(\.modelContext) private var context
+    //Sort:
+    @Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
+    
+    @State private var showAlert = false
     
     var body: some View {
         VStack (alignment: .trailing) {
             Button("add", systemImage: "plus.circle") {
                
                 if checkIfMedEmpty() {
-                    //let user know it's empty
+                    //let user know it's empty - alert
+                    showAlert = true
                 } else {
-                    medicines.append(Medicine(name: ""))
+                    //adding swiftData
+                    context.insert(MedicineData(name: "", isSelected: false))
                 }
             } .padding(.horizontal)
             
-            ForEach (medicines, id: \.self) { medicineView in
-                MedicineRowView(label: medicineView.name)
+            ForEach (medicines) { medicine in
+                MedicineRowView(medicineData:
+            Binding(get: { medicine
+                }, set: { newValue in
+                    medicine.name = newValue.name
+                    medicine.isSelected = newValue.isSelected
+                    }))
             }
             .padding(.vertical, -4)
+            .alert("Fill out before continuing", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {
+                    showAlert = false
+                }
+            }
         }
     }
     
     func checkIfMedEmpty() -> Bool {
-        for medicine in medicines {
-            if medicine.name == "" {
-                return true
-            }
-        }
-        return false
+        medicines.contains{ $0.name.trimmingCharacters(in: .whitespaces).isEmpty}
     }
     
 }
@@ -43,7 +57,10 @@ struct MedicineView: View {
 
 #Preview {
     MedicineView()
+        .modelContainer(SampleData.shared.modelContainer)
 }
+
+
 //
 //for medicine in medicines {
 //        if medicine.name == "" {

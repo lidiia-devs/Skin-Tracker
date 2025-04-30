@@ -13,6 +13,9 @@ struct HomaPageView: View {
         VStack {
             Text("Good Morning,")
             Text("Name")
+            SkinImagesView()
+                .modelContainer(SampleData.shared.modelContainer)
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)

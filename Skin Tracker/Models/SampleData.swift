@@ -34,12 +34,16 @@ class SampleData {
     var skinImages: [StoredImage] {
         StoredImage.sampleData
     }
+    var skinDay: SkinDay{
+        SkinDay.sampleData
+    }
 
     
     private init(){
         let schema = Schema([
             MedicineData.self,
-            StoredImage.self
+            StoredImage.self,
+            SkinDay.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
@@ -69,5 +73,6 @@ class SampleData {
 //        Friend.sampleData[2].favoriteMovie = Movie.sampleData[0]
 //        Friend.sampleData[3].favoriteMovie = Movie.sampleData[4]
 //        Friend.sampleData[4].favoriteMovie = Movie.sampleData[0]
+        context.insert(SkinDay.sampleData)
     }
 }

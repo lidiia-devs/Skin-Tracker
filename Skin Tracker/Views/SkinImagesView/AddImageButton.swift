@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AddImageButton: View {
-
+    
     //TODO: 1 create alert that has photo library and camera
     //add variable to check if settings permission granted
     var ifSettingsChanged: Bool = false
@@ -18,7 +18,6 @@ struct AddImageButton: View {
     @State private var selectedImage: UIImage?
     
     @Environment(\.modelContext) private var context
-    @Query var savedImages: [StoredImage]
     
     //Alert management
     @State private var showPermissionAlert = false
@@ -28,22 +27,22 @@ struct AddImageButton: View {
     
     var body: some View {
         VStack {
-        Button {
-            alertIsPresented.toggle()
-        } label: {
-            Image(systemName: "plus.circle.fill")
-                .resizable()
-                .frame(width: 25, height: 25)
-                .cornerRadius(8)
-                .foregroundColor(.white)
-                .background(Color.background)
-        }
-        .alert("Add Image", isPresented: $alertIsPresented) {
-            
-            if ifSettingsChanged {
-                //button that launches to settings
-                //cancels
-            } else {
+            Button {
+                alertIsPresented.toggle()
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .cornerRadius(8)
+                    .foregroundColor(.white)
+                    .background(Color.background)
+            }
+            .alert("Add Image", isPresented: $alertIsPresented) {
+                
+                //            if ifSettingsChanged {
+                //                //button that launches to settings
+                //                //cancels
+                //            } else {
                 Button("Open Camera", role: .none) {
                     //TODO: launch the imagepicker
                     PermissionManager.checkPermission(for: .camera) { granted in
@@ -69,25 +68,14 @@ struct AddImageButton: View {
                             showPermissionAlert = true
                         }
                     }
-                    
                 }
                 Button("Cancel", role: .cancel) {}
+                
+            }
+            .onAppear {
+                //getting settings preference
             }
         }
-        .onAppear {
-            //getting settings preference
-        }
-        
-        if selectedImage != nil {
-            Button("Save to SwiftData") { //Important: when storing photos to swift data, must turn image into data first
-                if let imageData = selectedImage?.jpegData(compressionQuality: 0.8) {
-                    let newImage = StoredImage(imageData: imageData)
-                    context.insert(newImage)
-                    try? context.save()
-                }
-            }
-        }
-    }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: useCamera ? .camera : .photoLibrary, selectedImage: $selectedImage)
         }
@@ -101,10 +89,25 @@ struct AddImageButton: View {
         } message: {
             Text(alertMessage)
         }
+        .onChange(of: selectedImage) { oldValue, newValue in
+            if let image = newValue {
+                saveImageToSwiftData(image)
+                selectedImage = nil
+            }
+        }
     }
+    
+    func saveImageToSwiftData(_ image: UIImage) {
+        if let imageData = image.jpegData(compressionQuality: 0.8) {
+            let newStoredImage = StoredImage(imageData: imageData)
+            context.insert(newStoredImage)
+            try? context.save()
+        }
+    }
+}
         
     //upload image to swiftData
-}
+
 
 #Preview {
     AddImageButton()

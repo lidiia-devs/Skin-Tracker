@@ -11,8 +11,6 @@ struct MainPageView: View {
     
     var body: some View {
         VStack {
-            MedicineView()
-            SkinImagesView()
         }
     }
 }

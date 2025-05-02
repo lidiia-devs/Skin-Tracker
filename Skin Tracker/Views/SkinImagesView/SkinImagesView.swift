@@ -9,10 +9,31 @@ import SwiftUI
 import SwiftData
 
 struct SkinImagesView: View {
+    //SkinDay
     
     @Environment(\.modelContext) private var context
-    @Query var storedImages: [StoredImage]
+    //@Query var storedImages: [StoredImage]
+    var skinDay: SkinDay
     
+    var storedSkinImages: [StoredImage] {
+        skinDay.storedSkinImages
+    }
+//    init() {
+//        let calendar = Calendar.current
+//        
+//        let startOfDay = calendar.startOfDay(for: Date())
+//        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+//        
+//        let predicate = #Predicate<StoredImage> {
+//            $0.dateCreated <= $0.dateCreated && $0.dateCreated < endOfDay
+//        }
+//        
+//        let sort = [SortDescriptor(\.date, order: .reverse)]
+//        
+//        _storedImages = Query(filter: predicate, sort: sort)
+//            
+//    }
+//    
     var body: some View {
         VStack (alignment: .leading) {
             Text("Images")
@@ -28,7 +49,7 @@ struct SkinImagesView: View {
                     AddImageButton()
                         .padding(.vertical, 60)
                         .padding(.horizontal, 12)
-                    ForEach(storedImages) { skinImage in
+                    ForEach(storedSkinImages) { skinImage in
                         ImageItem(storedImageData: skinImage)
                     }
                 }
@@ -40,7 +61,7 @@ struct SkinImagesView: View {
     }
 }
 
-#Preview {
-    SkinImagesView()
-        .modelContainer(SampleData.shared.modelContainer)
-}
+//#Preview {
+//    SkinImagesView()
+//        .modelContainer(SampleData.shared.modelContainer)
+//}

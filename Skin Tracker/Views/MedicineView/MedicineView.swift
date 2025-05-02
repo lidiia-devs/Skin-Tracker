@@ -11,10 +11,11 @@ import SwiftData
 struct MedicineView: View {
     
     //add real swiftData Query
-    @Environment(\.modelContext) private var context
+  @Environment(\.modelContext) private var context
     //Sort:
-    @Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
+    //@Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
     
+    @State var medicines: [MedicineData]
     @State private var showAlert = false
     
     var body: some View {
@@ -56,8 +57,16 @@ struct MedicineView: View {
 
 
 #Preview {
-    MedicineView()
-        .modelContainer(SampleData.shared.modelContainer)
+    struct PreviewWrapper: View {
+           @State private var sampleMeds = SampleData.shared.medicines
+
+           var body: some View {
+               MedicineView(medicines: sampleMeds)
+                   .modelContainer(SampleData.shared.modelContainer)
+           }
+       }
+       
+       return PreviewWrapper()
 }
 
 

@@ -11,7 +11,8 @@ import SwiftUI
 struct Skin_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            HomaPageView()
+            HomePageView()
         }
+        .modelContainer(for: [SkinDay.self, MedicineData.self, StoredImage.self])
     }
 }

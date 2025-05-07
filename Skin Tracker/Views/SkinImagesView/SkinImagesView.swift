@@ -13,27 +13,11 @@ struct SkinImagesView: View {
     
     @Environment(\.modelContext) private var context
     //@Query var storedImages: [StoredImage]
-    var skinDay: SkinDay
+    @Binding var skinDay: SkinDay
     
     var storedSkinImages: [StoredImage] {
         skinDay.storedSkinImages
     }
-//    init() {
-//        let calendar = Calendar.current
-//        
-//        let startOfDay = calendar.startOfDay(for: Date())
-//        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-//        
-//        let predicate = #Predicate<StoredImage> {
-//            $0.dateCreated <= $0.dateCreated && $0.dateCreated < endOfDay
-//        }
-//        
-//        let sort = [SortDescriptor(\.date, order: .reverse)]
-//        
-//        _storedImages = Query(filter: predicate, sort: sort)
-//            
-//    }
-//    
     var body: some View {
         VStack (alignment: .leading) {
             Text("Images")
@@ -46,7 +30,7 @@ struct SkinImagesView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 10) {
-                    AddImageButton()
+                    AddImageButton(skinDay: $skinDay)
                         .padding(.vertical, 60)
                         .padding(.horizontal, 12)
                     ForEach(storedSkinImages) { skinImage in

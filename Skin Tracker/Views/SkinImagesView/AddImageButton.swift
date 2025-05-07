@@ -25,6 +25,8 @@ struct AddImageButton: View {
     @State private var showSettingsButton = false
     @State var alertIsPresented: Bool = false
     
+    @Binding var skinDay: SkinDay
+    
     var body: some View {
         VStack {
             Button {
@@ -102,6 +104,9 @@ struct AddImageButton: View {
             let newStoredImage = StoredImage(imageData: imageData)
             context.insert(newStoredImage)
             try? context.save()
+            
+            skinDay.storedSkinImages.append(newStoredImage)
+            try? context.save()
         }
     }
 }
@@ -110,5 +115,5 @@ struct AddImageButton: View {
 
 
 #Preview {
-    AddImageButton()
+    //AddImageButton()
 }

@@ -12,7 +12,7 @@ import Foundation
 class MedicineData {
     var name: String
     var isSelected: Bool
-    let dateCreated: Date
+    var dateCreated: Date
     
     init(name: String = "", isSelected: Bool = false) {
         self.name = name

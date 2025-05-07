@@ -69,17 +69,3 @@ struct MedicineView: View {
        return PreviewWrapper()
 }
 
-
-//
-//for medicine in medicines {
-//        if medicine.name == "" {
-//            break
-//    }
-//    }
-//   let medicine = Medicine(name: "")
-//    medicines.append(medicine)
-//}
-//ForEach (medicines, id: \.self) { medicineView in
-//    MedicineRowView(label: medicineView.name)
-//}
-//.padding(.vertical, -4)

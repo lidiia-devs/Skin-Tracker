@@ -34,7 +34,14 @@ struct SkinImagesView: View {
                         .padding(.vertical, 60)
                         .padding(.horizontal, 12)
                     ForEach(storedSkinImages) { skinImage in
-                        ImageItem(storedImageData: skinImage)
+                        ImageItem(storedImageData: skinImage) {
+                            // Delete logic
+                            if let index = skinDay.storedSkinImages.firstIndex(where: { $0.id == skinImage.id }) {
+                                skinDay.storedSkinImages.remove(at: index)
+                                context.delete(skinImage)
+                                try? context.save()
+                            }
+                        }
                     }
                 }
                 .padding(.leading, 12)

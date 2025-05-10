@@ -29,22 +29,19 @@ struct HomePageView: View {
         
         _todaySkinDays = Query(filter: predicate, sort: sort)
         // Initialize todaySkinDay to a default value (we'll assign it later in `onAppear`)
-        _todaySkinDay = State(initialValue: SkinDay(skinScale: SkinScale(mood: 3, itch: 3, sleep: 3), medicines: [], storedImages: []))
+        _todaySkinDay = State(initialValue: SkinDay(skinScale: SkinScale(mood: 3, skinCalmness: 3, sleep: 3), medicines: [], storedImages: []))
     }
     
     var body: some View {
         VStack {
-            Text("Good Morning,")
-            Text("Name") // Add dynamic name later
-            
+            SliderView()
             // Always has a SkinDay, no need for optional handling
-            MedicineView(medicines: todaySkinDay.medicines)
+            MedicineView(skinDay: $todaySkinDay)
                 .modelContainer(for: [StoredImage.self, MedicineData.self])
-            
             // Pass the SkinDay as Binding to SkinImagesView
             SkinImagesView(skinDay: $todaySkinDay)
                 .modelContainer(for: [StoredImage.self, MedicineData.self])
-        }
+                }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)
         .onAppear {
@@ -70,7 +67,7 @@ struct HomePageView: View {
                } else {
                    // If no SkinDay exists, create a new one
                    let newDay = SkinDay(
-                       skinScale: SkinScale(mood: 3, itch: 3, sleep: 3),
+                       skinScale: SkinScale(mood: 3, skinCalmness: 3, sleep: 3),
                        medicines: [],
                        storedImages: []
                    )

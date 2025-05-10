@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ImageItem: View {
     var storedImageData: StoredImage
+    var onDelete: () -> Void
+    
+    @State private var showDeleteAlert = false
     
     var body: some View {
         if let skinImage = UIImage(data: storedImageData.imageData) {
@@ -17,14 +20,22 @@ struct ImageItem: View {
                 .resizable()
                 .frame(width: 155, height: 155)
                 .cornerRadius(8)
+                .onLongPressGesture {
+                    showDeleteAlert = true
+                }
+                .confirmationDialog("Delete this image?", isPresented: $showDeleteAlert, titleVisibility: .visible) {
+                    Button("Delete", role: .destructive) {
+                        onDelete()
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
         }
     }
-    
 }
 
-#Preview {
-    if let uiImage = UIImage(named: "lake"),
-       let data = uiImage.jpegData(compressionQuality: 1.0) {
-       ImageItem(storedImageData: StoredImage(imageData: data))
-    }
-}
+//#Preview {
+//    if let uiImage = UIImage(named: "lake"),
+//       let data = uiImage.jpegData(compressionQuality: 1.0) {
+//       ImageItem(storedImageData: StoredImage(imageData: data))
+//    }
+//}

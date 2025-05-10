@@ -9,13 +9,13 @@ import SwiftData
 
 @Model
 class SkinScale {
-    var mood: Int
-    var itch: Int
-    var sleep: Int
+    var mood: Double
+    var skinCalmness: Double
+    var sleep: Double
     
-    init(mood: Int = 3, itch: Int = 3, sleep: Int = 3) {
+    init(mood: Double = 3, skinCalmness: Double = 3, sleep: Double = 3) {
         self.mood = mood
-        self.itch = itch
+        self.skinCalmness = skinCalmness
         self.sleep = sleep
     }
 }

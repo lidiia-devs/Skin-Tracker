@@ -29,7 +29,7 @@ class SkinDay {
         let data = defaultImage.jpegData(compressionQuality: 1.0)!
         
         return SkinDay(
-            skinScale: SkinScale(mood: 3, itch: 2, sleep: 4),
+            skinScale: SkinScale(mood: 3, skinCalmness: 2, sleep: 4),
             medicines: [
                 MedicineData(name: "Vitamin D", isSelected: true),
                 MedicineData(name: "Vitamin D", isSelected: true)

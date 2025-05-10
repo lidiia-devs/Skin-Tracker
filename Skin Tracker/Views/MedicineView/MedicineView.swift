@@ -13,43 +13,53 @@ struct MedicineView: View {
     //add real swiftData Query
   @Environment(\.modelContext) private var context
     //Sort:
-    //@Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
+    @Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
     
-    @State var medicines: [MedicineData]
+    @Binding var skinDay: SkinDay
     @State private var showAlert = false
     
     var body: some View {
-        VStack (alignment: .trailing) {
-            Button("add", systemImage: "plus.circle") {
-               
-                if checkIfMedEmpty() {
-                    //let user know it's empty - alert
-                    showAlert = true
-                } else {
-                    //adding swiftData
-                    context.insert(MedicineData(name: "", isSelected: false))
+            VStack(alignment: .trailing) {
+                Button("add", systemImage: "plus.circle") {
+                    if checkIfMedEmpty() {
+                        showAlert = true
+                    } else {
+                        context.insert(MedicineData(name: "", isSelected: false))
+                    }
                 }
-            } .padding(.horizontal)
-            
-            ForEach (medicines) { medicine in
-                MedicineRowView(medicineData:
-            Binding(get: { medicine
-                }, set: { newValue in
-                    medicine.name = newValue.name
-                    medicine.isSelected = newValue.isSelected
-                    }))
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .foregroundColor(.white)
+                //List {
+                    ForEach(medicines) { medicine in
+                        MedicineRowView(medicineData: Binding(
+                            get: { medicine },
+                            set: { newValue in
+                                medicine.name = newValue.name
+                                medicine.isSelected = newValue.isSelected
+                            })
+                        )
+                    }
+                    .onDelete(perform: deleteMedicine)
+                   .padding(.vertical, -11)
+                    
+                //}
+                //.listStyle(.plain)
             }
-            .padding(.vertical, -4)
             .alert("Fill out before continuing", isPresented: $showAlert) {
-                Button("OK", role: .cancel) {
-                    showAlert = false
-                }
+                Button("OK", role: .cancel) { showAlert = false }
             }
-        }
     }
     
     func checkIfMedEmpty() -> Bool {
         medicines.contains{ $0.name.trimmingCharacters(in: .whitespaces).isEmpty}
+    }
+    
+    func deleteMedicine(at offsets: IndexSet) {
+        for index in offsets {
+            let medicine = medicines[index]
+            context.delete(medicine)
+        }
     }
     
 }
@@ -57,15 +67,15 @@ struct MedicineView: View {
 
 
 #Preview {
-    struct PreviewWrapper: View {
-           @State private var sampleMeds = SampleData.shared.medicines
-
-           var body: some View {
-               MedicineView(medicines: sampleMeds)
-                   .modelContainer(SampleData.shared.modelContainer)
-           }
-       }
-       
-       return PreviewWrapper()
+//    struct PreviewWrapper: View {
+//           @State private var sampleMeds = SampleData.shared.medicines
+//
+//           var body: some View {
+//               MedicineView(medicines: sampleMeds)
+//                   .modelContainer(SampleData.shared.modelContainer)
+//           }
+//       }
+//       
+//       return PreviewWrapper()
 }
 

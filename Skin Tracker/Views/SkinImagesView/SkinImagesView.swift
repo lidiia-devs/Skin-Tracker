@@ -9,17 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct SkinImagesView: View {
-    //SkinDay
-    
     @Environment(\.modelContext) private var context
-    //@Query var storedImages: [StoredImage]
-    @Binding var skinDay: SkinDay
-    
-    var storedSkinImages: [StoredImage] {
-        skinDay.storedSkinImages
-    }
+    @Binding var skinDay: SkinDay  // Bind directly to SkinDay
+
     var body: some View {
-        VStack (alignment: .leading) {
+        VStack(alignment: .leading) {
             Text("Images")
                 .font(.headline)
                 .fontWeight(.heavy)
@@ -27,13 +21,14 @@ struct SkinImagesView: View {
                 .padding(.top, 10)
                 .padding(.bottom, -12)
                 .foregroundColor(.white)
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 10) {
                     AddImageButton(skinDay: $skinDay)
                         .padding(.vertical, 60)
                         .padding(.horizontal, 12)
-                    ForEach(storedSkinImages) { skinImage in
+                    
+                    ForEach(skinDay.storedSkinImages) { skinImage in
                         ImageItem(storedImageData: skinImage) {
                             // Delete logic
                             if let index = skinDay.storedSkinImages.firstIndex(where: { $0.id == skinImage.id }) {
@@ -51,6 +46,8 @@ struct SkinImagesView: View {
         .background(Color.background)
     }
 }
+
+
 
 //#Preview {
 //    SkinImagesView()

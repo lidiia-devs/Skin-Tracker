@@ -9,59 +9,43 @@ import SwiftUI
 import SwiftData
 
 struct MedicineView: View {
-    
-    //add real swiftData Query
-  @Environment(\.modelContext) private var context
-    //Sort:
-    @Query(sort: \MedicineData.dateCreated) private var medicines: [MedicineData]
-    
     @Binding var skinDay: SkinDay
     @State private var showAlert = false
-    
+
     var body: some View {
-            VStack(alignment: .trailing) {
-                Button("add", systemImage: "plus.circle") {
-                    if checkIfMedEmpty() {
-                        showAlert = true
-                    } else {
-                        context.insert(MedicineData(name: "", isSelected: false))
-                    }
+        VStack(alignment: .trailing) {
+            Button("add", systemImage: "plus.circle") {
+                if checkIfMedEmpty() {
+                    showAlert = true
+                } else {
+                    skinDay.medicines.append(MedicineData(name: "", isSelected: false))
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 10)
-                .foregroundColor(.white)
-                //List {
-                    ForEach(medicines) { medicine in
-                        MedicineRowView(medicineData: Binding(
-                            get: { medicine },
-                            set: { newValue in
-                                medicine.name = newValue.name
-                                medicine.isSelected = newValue.isSelected
-                            })
-                        )
-                    }
-                    .onDelete(perform: deleteMedicine)
-                   .padding(.vertical, -11)
-                    
-                //}
-                //.listStyle(.plain)
             }
-            .alert("Fill out before continuing", isPresented: $showAlert) {
-                Button("OK", role: .cancel) { showAlert = false }
+            .padding(.horizontal, 20)
+            .padding(.top, 10)
+            .foregroundColor(.white)
+
+            ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
+                MedicineRowView(medicineData: Binding(
+                    get: { skinDay.medicines[index] },
+                    set: { skinDay.medicines[index] = $0 }
+                ))
             }
-    }
-    
-    func checkIfMedEmpty() -> Bool {
-        medicines.contains{ $0.name.trimmingCharacters(in: .whitespaces).isEmpty}
-    }
-    
-    func deleteMedicine(at offsets: IndexSet) {
-        for index in offsets {
-            let medicine = medicines[index]
-            context.delete(medicine)
+            .onDelete(perform: deleteMedicine)
+            .padding(.vertical, -11)
+        }
+        .alert("Fill out before continuing", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { showAlert = false }
         }
     }
-    
+
+    func checkIfMedEmpty() -> Bool {
+        skinDay.medicines.contains { $0.name.trimmingCharacters(in: .whitespaces).isEmpty }
+    }
+
+    func deleteMedicine(at offsets: IndexSet) {
+        skinDay.medicines.remove(atOffsets: offsets)
+    }
 }
 
 

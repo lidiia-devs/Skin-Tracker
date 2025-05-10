@@ -13,7 +13,7 @@ class SkinScale {
     var skinCalmness: Double
     var sleep: Double
     
-    init(mood: Double = 3, skinCalmness: Double = 3, sleep: Double = 3) {
+    init(mood: Double = 1, skinCalmness: Double = 1, sleep: Double = 1) {
         self.mood = mood
         self.skinCalmness = skinCalmness
         self.sleep = sleep

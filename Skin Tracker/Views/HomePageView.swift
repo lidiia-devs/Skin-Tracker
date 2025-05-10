@@ -29,12 +29,12 @@ struct HomePageView: View {
         
         _todaySkinDays = Query(filter: predicate, sort: sort)
         // Initialize todaySkinDay to a default value (we'll assign it later in `onAppear`)
-        _todaySkinDay = State(initialValue: SkinDay(skinScale: SkinScale(mood: 3, skinCalmness: 3, sleep: 3), medicines: [], storedImages: []))
+        _todaySkinDay = State(initialValue: SkinDay(skinScale: SkinScale(), medicines: [], storedImages: []))
     }
     
     var body: some View {
         VStack {
-            SliderView()
+            SliderView(skinDay: $todaySkinDay)
             // Always has a SkinDay, no need for optional handling
             MedicineView(skinDay: $todaySkinDay)
                 .modelContainer(for: [StoredImage.self, MedicineData.self])

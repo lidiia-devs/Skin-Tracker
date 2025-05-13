@@ -6,20 +6,19 @@
 //
 
 import SwiftData
-import Foundation
 import SwiftUI
 
 @Model
 class SkinDay {
     var date: Date
-    var skinScale: SkinScale
+    var skinSlider: SkinSlider
     var medicines: [MedicineData]
     var storedSkinImages: [StoredImage]
    //TODO: var image
     
-    init(skinScale: SkinScale, medicines: [MedicineData], storedImages: [StoredImage]) {
+    init(skinSlider: SkinSlider, medicines: [MedicineData], storedImages: [StoredImage]) {
         self.date = Date()
-        self.skinScale = skinScale
+        self.skinSlider = skinSlider
         self.medicines = medicines
         self.storedSkinImages = storedImages
     }
@@ -29,7 +28,7 @@ class SkinDay {
         let data = defaultImage.jpegData(compressionQuality: 1.0)!
         
         return SkinDay(
-            skinScale: SkinScale(mood: 1, skinCalmness: 1, sleep: 1),
+            skinSlider: SkinSlider(mood: 1, skinCalmness: 1, sleep: 1),
             medicines: [
                 MedicineData(name: "Vitamin D", isSelected: true),
                 MedicineData(name: "Steroid cream", isSelected: true)

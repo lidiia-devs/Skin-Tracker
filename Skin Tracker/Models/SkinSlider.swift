@@ -8,7 +8,7 @@
 import SwiftData
 
 @Model
-class SkinScale {
+class SkinSlider {
     var mood: Double
     var skinCalmness: Double
     var sleep: Double

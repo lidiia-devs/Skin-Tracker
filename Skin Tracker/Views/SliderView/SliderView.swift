@@ -15,9 +15,9 @@ struct SliderView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            labeledGradientSlider(title: "Mood", value: $skinDay.skinScale.mood)
-            labeledGradientSlider(title: "Skin Calmness", value: $skinDay.skinScale.skinCalmness)
-            labeledGradientSlider(title: "Sleep", value: $skinDay.skinScale.sleep)
+            labeledGradientSlider(title: "Mood", value: $skinDay.skinSlider.mood)
+            labeledGradientSlider(title: "Skin Calmness", value: $skinDay.skinSlider.skinCalmness)
+            labeledGradientSlider(title: "Sleep", value: $skinDay.skinSlider.sleep)
         }
         .font(.headline)
         .padding(.horizontal, 20)

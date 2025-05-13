@@ -12,8 +12,6 @@ struct MedicineRowView: View {
     
     @State private var placeholderColor: Color = .white
     
-  
-    
     var body: some View {
         HStack {
             Button(action: {

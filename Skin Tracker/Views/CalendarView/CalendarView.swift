@@ -190,79 +190,80 @@ struct CalendarView: View {
     private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     var body: some View {
-        VStack(spacing: 16) {
-            // Month and Navigation
-            HStack {
-                Button(action: { changeMonth(by: -1) }) {
-                    Image(systemName: "chevron.left")
-                }
-
-                Spacer()
-
-                Text(monthYearString(from: displayedMonth))
-                    .font(.headline)
-                    .foregroundColor(colorScheme == .light ? .white : .primary)
-
-                Spacer()
-
-                Button(action: { changeMonth(by: 1) }) {
-                    Image(systemName: "chevron.right")
-                }
-            }
-            .padding(.horizontal)
-
-            // Weekday Headers
-            HStack {
-                ForEach(daysOfWeek, id: \.self) { day in
-                    Text(day)
-                        .font(.caption)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .gray)
-                }
-            }
-
-            // Calendar Grid
-            let days = generateCalendarDays(for: displayedMonth)
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
-                ForEach(days, id: \.self) { date in
-                    if calendar.isDateInToday(date) {
-                        dayView(for: date)
-                            .background(
-                                Circle().fill(Color.white.opacity(0.2))
-                            )
-                    } else {
-                        dayView(for: date)
+        ScrollView {
+            VStack(spacing: 16) {
+                // Month and Navigation
+                HStack {
+                    Button(action: { changeMonth(by: -1) }) {
+                        Image(systemName: "chevron.left")
+                    }
+                    
+                    Spacer()
+                    
+                    Text(monthYearString(from: displayedMonth))
+                        .font(.headline)
+                        .foregroundColor(colorScheme == .light ? .white : .primary)
+                    
+                    Spacer()
+                    
+                    Button(action: { changeMonth(by: 1) }) {
+                        Image(systemName: "chevron.right")
                     }
                 }
+                .padding(.horizontal)
+                
+                // Weekday Headers
+                HStack {
+                    ForEach(daysOfWeek, id: \.self) { day in
+                        Text(day)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .gray)
+                    }
+                }
+                
+                // Calendar Grid
+                let days = generateCalendarDays(for: displayedMonth)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
+                    ForEach(days, id: \.self) { date in
+                        if calendar.isDateInToday(date) {
+                            dayView(for: date)
+                                .background(
+                                    Circle().fill(Color.white.opacity(0.2))
+                                )
+                        } else {
+                            dayView(for: date)
+                        }
+                    }
+                }
+                
+                Spacer()
             }
-
-            Spacer()
-        }
-        .safeAreaPadding(.top, )
-        .padding()
-        .background(Color.background)
-        .onChange(of: selectedDate) { oldValue, newValue in
-            if let newValue = newValue,
-               let pastSkinDate = viewModel.fetchSkinDay(for: newValue, using: context) {
-                pastSkinDay = pastSkinDate
-                showPastSkinDay = true
-            } else {
-                pastSkinDay = nil
-                showPastSkinDay = false
+            .padding()
+            .background(Color.background)
+            .onChange(of: selectedDate) { oldValue, newValue in
+                if let newValue = newValue,
+                   let pastSkinDate = viewModel.fetchSkinDay(for: newValue, using: context) {
+                    pastSkinDay = pastSkinDate
+                    showPastSkinDay = true
+                } else {
+                    pastSkinDay = nil
+                    showPastSkinDay = false
+                }
             }
-        }
-
-        if showPastSkinDay {
-            if let unwrappedPastSkinDay = pastSkinDay {
-                let binding = Binding<SkinDay>(
-                    get: { unwrappedPastSkinDay },
-                    set: { pastSkinDay = $0 }
-                )
-
-                SliderView(skinDay: binding)
-                MedicineView(skinDay: binding)
-                SkinImagesView(skinDay: binding)
-                Text("Yesterday's Skin Score")
+            
+            if showPastSkinDay {
+                if let unwrappedPastSkinDay = pastSkinDay {
+                    let binding = Binding<SkinDay>(
+                        get: { unwrappedPastSkinDay },
+                        set: { pastSkinDay = $0 }
+                    )
+                    
+                    SliderView(skinDay: binding)
+                    MedicineView(skinDay: binding)
+                    SkinImagesView(skinDay: binding)
+                    Text("Yesterday's Skin Score")
+                }
             }
         }
     }
@@ -336,6 +337,7 @@ struct CalendarView: View {
         return days
     }
 }
+    
 
 
 #Preview {

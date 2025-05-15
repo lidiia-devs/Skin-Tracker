@@ -32,4 +32,23 @@ class SkinDayViewModel: ObservableObject {
             todaySkinDay = newDay
         }
     }
+    
+    func fetchSkinDay(for date: Date, using context: ModelContext) -> SkinDay? {
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: date)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+
+        let descriptor = FetchDescriptor<SkinDay>(
+            predicate: #Predicate {
+                $0.date >= startOfDay && $0.date < endOfDay
+            }
+        )
+
+        if let result = try? context.fetch(descriptor), let firstMatch = result.first {
+            return firstMatch
+        }
+        
+        return nil
+    }
+
 }

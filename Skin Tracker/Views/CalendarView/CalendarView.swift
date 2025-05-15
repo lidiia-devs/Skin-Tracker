@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CalendarView: View {
+    
+    @Environment(\.modelContext) private var context
+    @StateObject private var viewModel = SkinDayViewModel()
+    
+    @State var pastSkinDay: SkinDay?
+    
     @State private var selectedDate: Date? = Date()
     @State private var displayedMonth: Date = Date()
+    
+    @State private var showPastSkinDay = false
 
     private let calendar = Calendar.current
     private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -63,6 +72,33 @@ struct CalendarView: View {
             Spacer()
         }
         .padding()
+        .onChange(of: selectedDate) { oldValue, newValue in
+            if let newValue = newValue,
+              let pastSkinDate = viewModel.fetchSkinDay(for: newValue, using: context) {
+                pastSkinDay = pastSkinDate
+                showPastSkinDay = true
+            } else {
+                pastSkinDay = nil
+                showPastSkinDay = false
+            }
+        }
+        
+        if showPastSkinDay {
+            if let unwrappedPastSkinDay = pastSkinDay {
+                let binding = Binding<SkinDay>(
+                    get: { unwrappedPastSkinDay },
+                    set: { pastSkinDay = $0 }
+                )
+
+                SliderView(skinDay: binding)
+                MedicineView(skinDay: binding)
+                SkinImagesView(skinDay: binding)
+                Text("Yesterday's Skin Score")
+            }
+        }
+        
+        // Add a Summary View or the HomeView loaded with a current date
+        
     }
 
     // MARK: - Helpers
@@ -137,4 +173,5 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
+        .modelContainer(SampleData.shared.modelContainer)
 }

@@ -16,8 +16,8 @@ class SkinDay {
     var storedSkinImages: [StoredImage]
    //TODO: var image
     
-    init(skinSlider: SkinSlider, medicines: [MedicineData], storedImages: [StoredImage]) {
-        self.date = Date()
+    init(date: Date = Date(),skinSlider: SkinSlider, medicines: [MedicineData], storedImages: [StoredImage]) {
+        self.date = date
         self.skinSlider = skinSlider
         self.medicines = medicines
         self.storedSkinImages = storedImages
@@ -27,7 +27,10 @@ class SkinDay {
         let defaultImage = UIImage(named: "lake")!
         let data = defaultImage.jpegData(compressionQuality: 1.0)!
         
-        return SkinDay(
+        let calendar = Calendar.current
+        let may12Date = calendar.date(from: DateComponents(year: 2025, month: 5, day: 12))!
+        
+        return SkinDay(date: may12Date,
             skinSlider: SkinSlider(mood: 1, skinCalmness: 1, sleep: 1),
             medicines: [
                 MedicineData(name: "Vitamin D", isSelected: true),

@@ -12,16 +12,20 @@ struct ImageItem: View {
     var onDelete: () -> Void
     
     @State private var showDeleteAlert = false
+    @State private var isFullScreen = false
     
     var body: some View {
         if let skinImage = UIImage(data: storedImageData.imageData) {
-            
-            //if isDataFromPast {
             Image(uiImage: skinImage)
                 .renderingMode(.original)
                 .resizable()
+                .scaledToFill()
                 .frame(width: 155, height: 155)
+                .clipped()
                 .cornerRadius(8)
+                .onTapGesture(count: 2) {
+                    isFullScreen = true
+                }
                 .onLongPressGesture {
                     showDeleteAlert = true
                 }
@@ -30,6 +34,28 @@ struct ImageItem: View {
                         onDelete()
                     }
                     Button("Cancel", role: .cancel) {}
+                }
+                .fullScreenCover(isPresented: $isFullScreen) {
+                    FullScreenImageView(image: skinImage, isPresented: $isFullScreen)
+                }
+        }
+    }
+}
+
+struct FullScreenImageView: View {
+    var image: UIImage
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.clear)
+                .onTapGesture {
+                    isPresented = false
                 }
         }
     }

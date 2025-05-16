@@ -16,7 +16,7 @@ struct HomePageView: View {
     var body: some View {
         VStack {
             SliderView(skinDay: $viewModel.todaySkinDay)
-            MedicineView(skinDay: $viewModel.todaySkinDay, isDataFromPast: true)
+            MedicineView(skinDay: $viewModel.todaySkinDay, isDataFromPast: false)
             SkinImagesView(skinDay: $viewModel.todaySkinDay)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

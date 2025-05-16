@@ -31,13 +31,17 @@ struct MedicineRowView: View {
                 .font(.system(size: 23, weight: .bold))
                 .lineLimit(1)
                 .onChange(of: medicineData.name) { newValue in
-                                    if newValue.count > 29 {
-                                        medicineData.name = String(newValue.prefix(29))
-                                    }
-                                }
+                    if newValue.count > 29 {
+                        medicineData.name = String(newValue.prefix(29))
+                    }
+                }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.background)
+        .overlay(isDataFromPast ? Color.black.opacity(0.001)
+            .allowsHitTesting(true) :
+                    nil
+        )
     }
     
     func alertEmptyText () {

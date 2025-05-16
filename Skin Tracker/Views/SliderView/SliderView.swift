@@ -23,6 +23,10 @@ struct SliderView: View {
         .font(.headline)
         .padding(.horizontal, 20)
         .background(Color.background)
+        .overlay(isDataFromPast ? Color.black.opacity(0.001)
+            .allowsHitTesting(true) :
+                    nil
+        )
     }
 
     @ViewBuilder

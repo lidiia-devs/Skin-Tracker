@@ -12,7 +12,7 @@ struct SkinImagesView: View {
     @Environment(\.modelContext) private var context
     @Binding var skinDay: SkinDay  // Bind directly to SkinDay
     
-    //var isDataFromPast: Bool
+    var isDataFromPast: Bool = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,11 +26,11 @@ struct SkinImagesView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 10) {
-                    
+                    if !isDataFromPast {
                         AddImageButton(skinDay: $skinDay)
                             .padding(.vertical, 60)
                             .padding(.horizontal, 12)
-                    
+                    }
                     ForEach(skinDay.storedSkinImages) { skinImage in
                         ImageItem(storedImageData: skinImage) {
                             // Delete logic

@@ -97,7 +97,7 @@ struct CalendarView: View {
                     
                     SliderView(skinDay: binding, isDataFromPast: true)
                     MedicineView(skinDay: binding, isDataFromPast: true)
-                    SkinImagesView(skinDay: binding)
+                    SkinImagesView(skinDay: binding, isDataFromPast: true)
                 }
             }
         }

@@ -54,7 +54,7 @@ struct CalendarView: View {
                         Text(day)
                             .font(.caption)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .gray)
+                            .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .softGreen)
                     }
                 }
                 

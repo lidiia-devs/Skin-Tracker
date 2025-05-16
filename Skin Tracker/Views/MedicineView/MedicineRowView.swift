@@ -9,17 +9,19 @@ import SwiftUI
 struct MedicineRowView: View {
     
     @Binding var medicineData: MedicineData
-    
+    var isDataFromPast: Bool
     @State private var placeholderColor: Color = .white
     
     var body: some View {
         HStack {
             Button(action: {
-                medicineData.isSelected.toggle()
+                if !isDataFromPast { // used for static viewing past dayViews
+                    medicineData.isSelected.toggle()
+                }
             }) {
                 Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImage")
-                        .resizable()
-                        .frame(width: 43, height: 43)
+                    .resizable()
+                    .frame(width: 43, height: 43)
             }
             .padding(.leading, 20)
             .padding(.trailing, 10)

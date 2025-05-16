@@ -11,25 +11,29 @@ import SwiftData
 struct MedicineView: View {
     @Binding var skinDay: SkinDay
     @State private var showAlert = false
+    
+    var isDataFromPast: Bool = false
 
     var body: some View {
         VStack(alignment: .trailing) {
-            Button("add", systemImage: "plus.circle") {
-                if checkIfMedEmpty() {
-                    showAlert = true
-                } else {
-                    skinDay.medicines.append(MedicineData(name: "", isSelected: false))
+            if !isDataFromPast {
+                Button("add", systemImage: "plus.circle") {
+                    if checkIfMedEmpty() {
+                        showAlert = true
+                    } else {
+                        skinDay.medicines.append(MedicineData(name: "", isSelected: false))
+                    }
                 }
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .foregroundColor(.white)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 10)
-            .foregroundColor(.white)
 
-            ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
+        ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
                 MedicineRowView(medicineData: Binding(
                     get: { skinDay.medicines[index] },
                     set: { skinDay.medicines[index] = $0 }
-                ))
+                ), isDataFromPast: self.isDataFromPast)
             }
             .onDelete(perform: deleteMedicine)
             .padding(.vertical, -11)
@@ -47,7 +51,6 @@ struct MedicineView: View {
         skinDay.medicines.remove(atOffsets: offsets)
     }
 }
-
 
 
 #Preview {

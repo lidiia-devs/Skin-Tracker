@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SliderView: View {
     @Binding var skinDay: SkinDay  // Bind to SkinDay to access SkinScale
-
+    
+    var isDataFromPast: Bool = false
     let range: ClosedRange<Double> = 1...5
 
     var body: some View {
@@ -21,6 +22,7 @@ struct SliderView: View {
         }
         .font(.headline)
         .padding(.horizontal, 20)
+        .background(Color.background)
     }
 
     @ViewBuilder
@@ -37,9 +39,14 @@ struct SliderView: View {
                 )
                 .frame(height: 4)
                 .cornerRadius(2)
-
-                Slider(value: value, in: range)
-                    .accentColor(.clear)
+                if isDataFromPast {
+                    let pastValue = value //TODO: value made to not be change
+                    Slider(value: pastValue, in: range)
+                        .accentColor(.clear)
+                } else {
+                    Slider(value: value, in: range)
+                        .accentColor(.clear)
+                }
             }
             .frame(height: 30)
         }
@@ -50,5 +57,5 @@ struct SliderView: View {
 
 
 #Preview {
-   // SliderView()
+  // SliderView()
 }

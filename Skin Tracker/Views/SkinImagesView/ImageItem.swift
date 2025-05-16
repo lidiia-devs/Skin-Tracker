@@ -13,22 +13,36 @@ struct ImageItem: View {
     
     @State private var showDeleteAlert = false
     
+    //var isDataFromPast: Bool
+    
     var body: some View {
         if let skinImage = UIImage(data: storedImageData.imageData) {
-            Image(uiImage: skinImage)
-                .renderingMode(.original)
-                .resizable()
-                .frame(width: 155, height: 155)
-                .cornerRadius(8)
-                .onLongPressGesture {
-                    showDeleteAlert = true
-                }
-                .confirmationDialog("Delete this image?", isPresented: $showDeleteAlert, titleVisibility: .visible) {
-                    Button("Delete", role: .destructive) {
-                        onDelete()
+            
+            //if isDataFromPast {
+                Image(uiImage: skinImage)
+                    .renderingMode(.original)
+                    .resizable()
+                    .frame(width: 155, height: 155)
+                    .cornerRadius(8)
+                    .onLongPressGesture {
+                        showDeleteAlert = true
                     }
-                    Button("Cancel", role: .cancel) {}
-                }
+                    .confirmationDialog("Delete this image?", isPresented: $showDeleteAlert, titleVisibility: .visible) {
+                        Button("Delete", role: .destructive) {
+                            onDelete()
+                        }
+                        Button("Cancel", role: .cancel) {}
+                    }
+//            } else {
+//                Image(uiImage: skinImage)
+//                    .renderingMode(.original)
+//                    .resizable()
+//                    .frame(width: 155, height: 155)
+//                    .cornerRadius(8)
+//                    .onLongPressGesture {
+//                        showDeleteAlert = true
+//
+//            }
         }
     }
 }

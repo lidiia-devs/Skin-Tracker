@@ -19,7 +19,7 @@ struct MedicineRowView: View {
                     medicineData.isSelected.toggle()
                 }
             }) {
-                Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImageEmpty")
+                Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImage")
                     .resizable()
                     .frame(width: 43, height: 43)
             }

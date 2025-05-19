@@ -18,6 +18,36 @@
             endingLineNumber = "36"
             landmarkName = "fetchSkinDay(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "27BC7C1B-10EA-46B3-8EDE-B59F9116B1D7 - 7eba75e26306e9c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37">
+               </Location>
+               <Location
+                  uuid = "27BC7C1B-10EA-46B3-8EDE-B59F9116B1D7 - 7eba75e26306e9c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,6 +64,64 @@
             endingLineNumber = "47"
             landmarkName = "fetchSkinDay(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,6 +138,36 @@
             endingLineNumber = "48"
             landmarkName = "fetchSkinDay(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D89B4E6C-7C2E-4963-AB93-0577289AA0EC - 7eba75e26306ee29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48">
+               </Location>
+               <Location
+                  uuid = "D89B4E6C-7C2E-4963-AB93-0577289AA0EC - 7eba75e26306ee29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,6 +184,36 @@
             endingLineNumber = "51"
             landmarkName = "fetchSkinDay(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "410D0187-FB52-42E6-961E-6DF2DD8BCE8E - 7eba75e26306ef96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+               <Location
+                  uuid = "410D0187-FB52-42E6-961E-6DF2DD8BCE8E - 7eba75e26306ef96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

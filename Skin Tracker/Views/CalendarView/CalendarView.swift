@@ -32,6 +32,7 @@ struct CalendarView: View {
                 HStack {
                     Button(action: { changeMonth(by: -1) }) {
                         Image(systemName: "chevron.left")
+                            .foregroundColor(.softGreen)
                     }
                     
                     Spacer()
@@ -44,6 +45,7 @@ struct CalendarView: View {
                     
                     Button(action: { changeMonth(by: 1) }) {
                         Image(systemName: "chevron.right")
+                            .foregroundColor(.softGreen)
                     }
                 }
                 .padding(.horizontal)
@@ -54,7 +56,7 @@ struct CalendarView: View {
                         Text(day)
                             .font(.caption)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .softGreen)
+                            .foregroundColor(colorScheme == .light ? .white.opacity(0.7) : .white)
                     }
                 }
                 

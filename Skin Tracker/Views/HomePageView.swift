@@ -21,9 +21,11 @@ struct HomePageView: View {
                     .frame(width: 110, height: 55)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(formattedToday)
+                    .padding(.top, 37)
                     .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .fontWeight(.medium)
+                    .foregroundColor(.softGreen)
+                    .opacity(0.5)
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 25)

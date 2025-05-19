@@ -28,7 +28,7 @@ struct MedicineRowView: View {
             .padding(.vertical, 12)
             TextField("Medicine", text: $medicineData.name)
                 .foregroundColor(.white)
-                .font(.system(size: 23, weight: .bold))
+                .font(.system(size: 23, weight: .medium))
                 .lineLimit(1)
                 .onChange(of: medicineData.name) { newValue in
                     if newValue.count > 29 {

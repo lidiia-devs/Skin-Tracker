@@ -18,7 +18,7 @@ struct SkinImagesView: View {
         VStack(alignment: .leading) {
             Text("Images")
                 .font(.headline)
-                .fontWeight(.heavy)
+                .fontWeight(.medium)
                 .padding(.leading, 15)
                 .padding(.top, 10)
                 .padding(.bottom, -12)

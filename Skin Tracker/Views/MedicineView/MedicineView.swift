@@ -28,7 +28,7 @@ struct MedicineView: View {
                 .padding(.top, 10)
                 .foregroundColor(.white)
             }
-
+            
         ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
                 MedicineRowView(medicineData: Binding(
                     get: { skinDay.medicines[index] },

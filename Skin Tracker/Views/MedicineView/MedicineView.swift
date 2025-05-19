@@ -17,7 +17,7 @@ struct MedicineView: View {
     var body: some View {
         VStack(alignment: .trailing) {
             if !isDataFromPast {
-                Button("add", systemImage: "plus.circle") {
+                Button("add", systemImage: "plus.circle.fill") {
                     if checkIfMedEmpty() {
                         showAlert = true
                     } else {

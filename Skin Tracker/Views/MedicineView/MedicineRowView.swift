@@ -19,7 +19,7 @@ struct MedicineRowView: View {
                     medicineData.isSelected.toggle()
                 }
             }) {
-                Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImage")
+                Image(medicineData.isSelected ? "buttonImageWithTick" : "buttonImageWithTick")
                     .resizable()
                     .frame(width: 43, height: 43)
             }
@@ -27,7 +27,7 @@ struct MedicineRowView: View {
             .padding(.trailing, 10)
             .padding(.vertical, 12)
             TextField("Medicine", text: $medicineData.name)
-                .foregroundColor(placeholderColor)
+                .foregroundColor(.white)
                 .font(.system(size: 23, weight: .bold))
                 .lineLimit(1)
                 .onChange(of: medicineData.name) { newValue in

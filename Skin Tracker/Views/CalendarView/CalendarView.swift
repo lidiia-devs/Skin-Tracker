@@ -98,6 +98,7 @@ struct CalendarView: View {
                     SliderView(skinDay: binding, isDataFromPast: true)
                     MedicineView(skinDay: binding, isDataFromPast: true)
                     SkinImagesView(skinDay: binding, isDataFromPast: true)
+                    Spacer().frame(height: 60) //extra padding under images
                 }
             }
         }

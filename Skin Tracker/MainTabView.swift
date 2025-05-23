@@ -47,7 +47,7 @@ struct MainTabView: View {
                     }
             }
             .padding(.horizontal, 50)
-            .padding(.vertical, 15)
+            .padding(.vertical, 12)
             .background(
                 Capsule()
                     .fill(Color.mintGreen)
@@ -55,6 +55,7 @@ struct MainTabView: View {
                     .shadow(radius: 5)// Expand to full width
             )
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

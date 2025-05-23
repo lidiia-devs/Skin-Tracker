@@ -29,8 +29,8 @@ struct AddImageButton: View {
     
     var body: some View {
         VStack {
-            Button {
-                alertIsPresented.toggle()
+                Button {
+                    alertIsPresented.toggle()
             } label: {
                 Image(systemName: "plus.circle.fill")
                     .resizable()
@@ -38,7 +38,7 @@ struct AddImageButton: View {
                     .cornerRadius(8)
                     .foregroundColor(.white)
                     .background(Color.background)
-            }
+        }
             .alert("Add Image", isPresented: $alertIsPresented) {
                 
                 //            if ifSettingsChanged {
@@ -49,12 +49,16 @@ struct AddImageButton: View {
                     //TODO: launch the imagepicker
                     PermissionManager.checkPermission(for: .camera) { granted in
                         if granted {
-                            useCamera = true
-                            showImagePicker = true
+                            DispatchQueue.main.async {
+                                useCamera = true
+                                showImagePicker = true
+                            }
                         } else {
-                            alertMessage = "Camera access is required to take photos"
-                            showSettingsButton = true
-                            showPermissionAlert = true
+                            DispatchQueue.main.async {
+                                            alertMessage = "Camera access is required to take photos"
+                                            showSettingsButton = true
+                                            showPermissionAlert = true
+                                        }
                         }
                     }
                 }
@@ -62,12 +66,16 @@ struct AddImageButton: View {
                     //TODO: launch the imagepicker
                     PermissionManager.checkPermission(for: .photoLibrary) { granted in
                         if granted {
-                            useCamera = false
-                            showImagePicker = true
+                            DispatchQueue.main.async {
+                                            useCamera = false
+                                            showImagePicker = true
+                                        }
                         } else {
-                            alertMessage = "Photo library access is required to upload photos"
-                            showSettingsButton = true
-                            showPermissionAlert = true
+                            DispatchQueue.main.async {
+                                            alertMessage = "Photo library access is required to upload photos"
+                                            showSettingsButton = true
+                                            showPermissionAlert = true
+                                        }
                         }
                     }
                 }

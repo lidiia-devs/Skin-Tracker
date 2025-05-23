@@ -11,6 +11,7 @@ import SwiftData
 struct MedicineView: View {
     @Binding var skinDay: SkinDay
     @State private var showAlert = false
+    @FocusState private var focusedFieldIndex: Int?
     
     var isDataFromPast: Bool = false
 
@@ -22,6 +23,7 @@ struct MedicineView: View {
                         showAlert = true
                     } else {
                         skinDay.medicines.append(MedicineData(name: "", isSelected: false))
+                        focusedFieldIndex = skinDay.medicines.count - 1 // 👈 Focus new field
                     }
                 }
                 .padding(.horizontal, 20)
@@ -29,11 +31,16 @@ struct MedicineView: View {
                 .foregroundColor(.white)
             }
             
-        ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
-                MedicineRowView(medicineData: Binding(
-                    get: { skinDay.medicines[index] },
-                    set: { skinDay.medicines[index] = $0 }
-                ), isDataFromPast: self.isDataFromPast)
+            ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
+                MedicineRowView(
+                    medicineData: Binding(
+                        get: { skinDay.medicines[index] },
+                        set: { skinDay.medicines[index] = $0 }
+                    ),
+                    isDataFromPast: self.isDataFromPast,
+                    index: index,
+                    focusedIndex: $focusedFieldIndex
+                )
             }
             .onDelete(perform: deleteMedicine)
             .padding(.vertical, -11)
@@ -51,6 +58,7 @@ struct MedicineView: View {
         skinDay.medicines.remove(atOffsets: offsets)
     }
 }
+
 
 
 #Preview {

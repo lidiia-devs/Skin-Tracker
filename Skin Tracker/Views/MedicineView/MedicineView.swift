@@ -36,7 +36,7 @@ struct MedicineView: View {
             }
 
             ForEach($skinDay.medicines) { $medicine in
-                SwipeToDeleteRow(onDelete: {
+                SwipeToDeleteRow(isSwipeEnabled: !isDataFromPast, onDelete: {
                     if let index = skinDay.medicines.firstIndex(where: { $0.id == medicine.id }) {
                         skinDay.medicines.remove(at: index)
                     }
@@ -69,31 +69,36 @@ struct MedicineView: View {
 struct SwipeToDeleteRow<Content: View>: View {
     let content: Content
     let onDelete: () -> Void
-    
+    let isSwipeEnabled: Bool
+
     @State private var offset: CGFloat = 0
     @GestureState private var dragOffset: CGFloat = 0
-    
-    init(onDelete: @escaping () -> Void, @ViewBuilder content: () -> Content) {
+
+    init(isSwipeEnabled: Bool = true, onDelete: @escaping () -> Void, @ViewBuilder content: () -> Content) {
         self.content = content()
         self.onDelete = onDelete
+        self.isSwipeEnabled = isSwipeEnabled
     }
-    
+
     var body: some View {
         ZStack(alignment: .trailing) {
-            Color.red
-                .frame(maxHeight: .infinity)
-                .overlay(
-                    Image(systemName: "trash.fill")
-                        .foregroundColor(.white)
-                        .padding(.trailing, 20),
-                    alignment: .trailing
-                )
-            
+            if isSwipeEnabled {
+                Color.red
+                    .frame(maxHeight: .infinity)
+                    .overlay(
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.white)
+                            .padding(.trailing, 20),
+                        alignment: .trailing
+                    )
+            }
+
             content
                 .background(Color(.systemBackground))
                 .contentShape(Rectangle())
-                .offset(x: offset + dragOffset)
+                .offset(x: isSwipeEnabled ? (offset + dragOffset) : 0)
                 .gesture(
+                    isSwipeEnabled ?
                     DragGesture()
                         .updating($dragOffset) { value, state, _ in
                             if value.translation.width < 0 {
@@ -102,24 +107,21 @@ struct SwipeToDeleteRow<Content: View>: View {
                         }
                         .onEnded { value in
                             if value.translation.width < -100 {
-                                // trigger delete
                                 withAnimation {
                                     onDelete()
                                 }
                             } else {
-                                // snap back
                                 withAnimation {
                                     offset = 0
                                 }
                             }
                         }
+                    : nil
                 )
         }
         .padding(.vertical, 7)
     }
 }
-
-
 
 
 

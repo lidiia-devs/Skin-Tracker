@@ -10,6 +10,7 @@ struct MedicineRowView: View {
     @Binding var medicineData: MedicineData
     var isDataFromPast: Bool
     var index: Int
+   
     @State private var placeholderColor: Color = .white
     @FocusState.Binding var focusedIndex: Int?
 

@@ -31,20 +31,9 @@ struct MedicineView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
+                .padding(.bottom, 15)
                 .foregroundColor(.white)
             }
-            
-//            ForEach(Array(skinDay.medicines.enumerated()), id: \.element.id) { index, medicine in
-//                MedicineRowView(
-//                    medicineData: Binding(
-//                        get: { skinDay.medicines[index] },
-//                        set: { skinDay.medicines[index] = $0 }
-//                    ),
-//                    isDataFromPast: self.isDataFromPast,
-//                    index: index,
-//                    focusedIndex: $focusedFieldIndex
-//                )
-//            }
 
             ForEach($skinDay.medicines) { $medicine in
                 SwipeToDeleteRow(onDelete: {
@@ -59,8 +48,7 @@ struct MedicineView: View {
                         focusedIndex: $focusedFieldIndex
                     )
                 }
-                //.padding(.vertical, 4)
-            }            //.onDelete(perform: deleteMedicine)
+            }
             .padding(.vertical, -11)
         }
         .alert("Fill out before continuing", isPresented: $showAlert) {
@@ -95,7 +83,7 @@ struct SwipeToDeleteRow<Content: View>: View {
             Color.red
                 .frame(maxHeight: .infinity)
                 .overlay(
-                    Image(systemName: "trash")
+                    Image(systemName: "trash.fill")
                         .foregroundColor(.white)
                         .padding(.trailing, 20),
                     alignment: .trailing
@@ -127,9 +115,11 @@ struct SwipeToDeleteRow<Content: View>: View {
                         }
                 )
         }
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(.vertical, 7)
     }
 }
+
+
 
 
 

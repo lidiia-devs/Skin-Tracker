@@ -26,8 +26,8 @@ struct MedicineRowView: View {
                     .frame(width: 43, height: 43)
             }
             .padding(.leading, 20)
-            .padding(.trailing, 10)
-            .padding(.vertical, 12)
+            .padding(.trailing, 20)
+            .padding(.vertical, 3)
             
             TextField("Medicine", text: $medicineData.name)
                 .foregroundColor(.white)

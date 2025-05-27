@@ -24,6 +24,11 @@ struct CalendarView: View {
 
     private let calendar = Calendar.current
     private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    
+    private var shouldShowSliderView: Bool {
+        guard let skinSlider = pastSkinDay?.skinSlider else { return false }
+        return skinSlider.mood != 1.0 && skinSlider.skinCalmness != 1.0 && skinSlider.sleep != 1.0
+    }
 
     var body: some View {
         ScrollView {
@@ -90,13 +95,13 @@ struct CalendarView: View {
                 }
             }
             
-            if showPastSkinDay {
+            if showPastSkinDay, shouldShowSliderView {
                 if let unwrappedPastSkinDay = pastSkinDay {
                     let binding = Binding<SkinDay>(
                         get: { unwrappedPastSkinDay },
                         set: { pastSkinDay = $0 }
                     )
-                    
+
                     SliderView(skinDay: binding, isDataFromPast: true)
                     Spacer().frame(height: 25)
                     MedicineView(skinDay: binding, isDataFromPast: true)

@@ -34,6 +34,36 @@
             endingLineNumber = "47"
             landmarkName = "fetchSkinDay(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+               <Location
+                  uuid = "52903758-C36A-45F5-B4D7-4AFDCE6DC6C9 - 7eba75e26306ee0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Skin_Tracker.SkinDayViewModel.fetchSkinDay(for: Foundation.Date, using: SwiftData.ModelContext) -&gt; Swift.Optional&lt;Skin_Tracker.SkinDay&gt;"
+                  moduleName = "Skin Tracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidiia/Desktop/app%20development/Skin-Tracker/Skin%20Tracker/ViewModels/SkinDayViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

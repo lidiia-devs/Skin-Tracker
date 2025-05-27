@@ -24,9 +24,8 @@ struct MedicineView: View {
                     } else {
                         let newIndex = skinDay.medicines.count
                         skinDay.medicines.append(MedicineData(name: "", isSelected: false))
-                        DispatchQueue.main.async {
-                                    focusedFieldIndex = newIndex
-                                }
+                        focusedFieldIndex = newIndex
+                               
                     }
                 }
                 .padding(.horizontal, 20)
@@ -122,8 +121,6 @@ struct SwipeToDeleteRow<Content: View>: View {
         .padding(.vertical, 7)
     }
 }
-
-
 
 
 #Preview {

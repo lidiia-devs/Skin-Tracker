@@ -7,7 +7,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>launchColor</string>
+		<string>mintGreen</string>
 		<key>UIImageName</key>
 		<string>SHT1</string>
 		<key>UIImageRespectsSafeAreaInsets</key>

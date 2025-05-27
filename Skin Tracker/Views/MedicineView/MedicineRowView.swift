@@ -54,6 +54,7 @@ struct MedicineRowView: View {
     }
 }
 
+
 #Preview {
  //   let testMedData = MedicineData()
  // MedicineRowView(medicineData)
